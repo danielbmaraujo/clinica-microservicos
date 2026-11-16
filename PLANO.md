@@ -205,9 +205,9 @@ curl -X POST localhost:8002/consultas -H "Content-Type: application/json" \
 ```
 Commit: `feat(agendamento): consultas com validação de paciente via rede`
 
-### ☐ CP5 — Serviço de Notificações (Node.js)
-- [ ] Express + Mongoose + cors, `package.json` com script `npm start`
-- [ ] Rotas da seção 4.3, `/health`, log no console ao registrar
+### ☑ CP5 — Serviço de Notificações (Node.js)
+- [x] Express + Mongoose + cors, `package.json` com script `npm start`
+- [x] Rotas da seção 4.3, `/health`, log no console ao registrar
 
 Pronto quando:
 ```bash
@@ -261,7 +261,7 @@ Commit: `docs: README, script de inicialização e roteiro de demonstração`
 | CP2 Pacientes | ☑ | Rodar: `cd servico-pacientes && source venv/bin/activate && uvicorn main:app --port 8001 --reload`. Exemplos: Ana (id 1), Bruno (2), Carla (3) |
 | CP3 Agendamento 1 | ☑ | Spring Boot 3.5.16, Java 17. Rodar: `cd servico-agendamento && mvn spring-boot:run` |
 | CP4 Agendamento 2 | ☑ | Notificações ficam para o CP6. Timeout de 3 s na chamada ao Pacientes |
-| CP5 Notificações | ☐ | |
+| CP5 Notificações | ☑ | Express 5, Mongoose 9. Rodar: `cd servico-notificacoes && npm install && npm start` |
 | CP6 Integração | ☐ | |
 | CP7 Frontend | ☐ | |
 | CP8 Fechamento | ☐ | |
