@@ -176,11 +176,11 @@ curl localhost:8001/pacientes
 ```
 Commit: `feat(pacientes): serviço de pacientes em Python/FastAPI`
 
-### ☐ CP3 — Agendamento, parte 1: profissionais e horários (Java)
-- [ ] Projeto Spring Boot 3 (Maven) com Web, Data JPA, MySQL Driver, Validation
-- [ ] Entidade Profissional + rotas `/profissionais`, `/horarios-livres`, `/health`, CORS
-- [ ] Popular 3 profissionais de exemplo se vazio
-- [ ] Tratamento global de erros no formato `{"erro": ...}`
+### ☑ CP3 — Agendamento, parte 1: profissionais e horários (Java)
+- [x] Projeto Spring Boot 3 (Maven) com Web, Data JPA, MySQL Driver, Validation
+- [x] Entidade Profissional + rotas `/profissionais`, `/horarios-livres`, `/health`, CORS
+- [x] Popular 3 profissionais de exemplo se vazio
+- [x] Tratamento global de erros no formato `{"erro": ...}`
 
 Pronto quando:
 ```bash
@@ -259,7 +259,7 @@ Commit: `docs: README, script de inicialização e roteiro de demonstração`
 | CP0 Ambiente | ☑ | Python 3.13, Java 21, Maven 3.10 (via ~/.mavenrc usa Java 21), Node 22, Docker 29. MySQL Pacientes na porta 3308 |
 | CP1 Bancos | ☑ | mysql:8.4 (3308 e 3307) e mongo:7 (27017). Mongo com usuário root `clinica` → usar `?authSource=admin` na conexão |
 | CP2 Pacientes | ☑ | Rodar: `cd servico-pacientes && source venv/bin/activate && uvicorn main:app --port 8001 --reload`. Exemplos: Ana (id 1), Bruno (2), Carla (3) |
-| CP3 Agendamento 1 | ☐ | |
+| CP3 Agendamento 1 | ☑ | Spring Boot 3.5.16, Java 17. Rodar: `cd servico-agendamento && mvn spring-boot:run` |
 | CP4 Agendamento 2 | ☐ | |
 | CP5 Notificações | ☐ | |
 | CP6 Integração | ☐ | |
