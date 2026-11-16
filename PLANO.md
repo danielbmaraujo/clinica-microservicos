@@ -12,7 +12,7 @@ Cada serviço é um processo separado, em linguagem diferente, com banco própri
 | Parte | Linguagem / Stack | Endereço | Banco |
 |---|---|---|---|
 | Frontend | React (Vite) | http://localhost:3000 | — |
-| Serviço de Pacientes | Python 3.11+ · FastAPI · SQLAlchemy | http://localhost:8001 | MySQL `db_pacientes` · localhost:3306 |
+| Serviço de Pacientes | Python 3.11+ · FastAPI · SQLAlchemy | http://localhost:8001 | MySQL `db_pacientes` · localhost:3308 |
 | Serviço de Agendamento | Java 17 · Spring Boot 3 · Maven · JPA | http://localhost:8002 | MySQL `db_agendamento` · localhost:3307 |
 | Serviço de Notificações | Node.js 20 · Express · Mongoose | http://localhost:8003 | MongoDB `db_notificacoes` · localhost:27017 |
 
@@ -146,16 +146,16 @@ Mostrar a mensagem de `erro` da API na tela quando algo falhar. Usar `fetch` (se
 Regra: **um checkpoint por vez**. Só avança quando o "Pronto quando" passar e o Daniel confirmar.
 Ao terminar cada um: marcar `[x]`, fazer o commit com a mensagem indicada e parar.
 
-### ☐ CP0 — Preparar ambiente
-- [ ] Verificar instalados no Mac: `python3 --version` (3.11+), `java -version` (17+), `mvn -v`, `node -v` (20+), `docker -v`
-- [ ] Listar o que falta e passar ao Daniel o comando de instalação (Homebrew) — **não instalar sem ele aprovar**
-- [ ] Criar as pastas da seção 2 na raiz do repositório e conferir o `.gitignore`
+### ☑ CP0 — Preparar ambiente
+- [x] Verificar instalados no Mac: `python3 --version` (3.11+), `java -version` (17+), `mvn -v`, `node -v` (20+), `docker -v`
+- [x] Listar o que falta e passar ao Daniel o comando de instalação (Homebrew) — **não instalar sem ele aprovar**
+- [x] Criar as pastas da seção 2 na raiz do repositório e conferir o `.gitignore`
 
 Pronto quando: todas as ferramentas respondem com a versão.
 Commit: `chore: estrutura inicial do trabalho 4 (microsserviços)`
 
 ### ☐ CP1 — Bancos de dados
-- [ ] `docker-compose.yml` com 3 containers: `mysql-pacientes` (3306), `mysql-agendamento` (3307), `mongo-notificacoes` (27017), com volumes
+- [ ] `docker-compose.yml` com 3 containers: `mysql-pacientes` (3308 → 3306 no container; a 3306 do Mac já é usada por um MySQL local), `mysql-agendamento` (3307), `mongo-notificacoes` (27017), com volumes
 - [ ] Usuário/senha simples de desenvolvimento (`clinica` / `clinica123`), banco já criado no MySQL
 
 Pronto quando: `docker compose up -d` e `docker compose ps` mostra os 3 rodando.
@@ -256,7 +256,7 @@ Commit: `docs: README, script de inicialização e roteiro de demonstração`
 
 | Checkpoint | Status | Observações |
 |---|---|---|
-| CP0 Ambiente | ☐ | |
+| CP0 Ambiente | ☑ | Python 3.13, Java 21, Maven 3.10 (via ~/.mavenrc usa Java 21), Node 22, Docker 29. MySQL Pacientes na porta 3308 |
 | CP1 Bancos | ☐ | |
 | CP2 Pacientes | ☐ | |
 | CP3 Agendamento 1 | ☐ | |
