@@ -161,10 +161,10 @@ Commit: `chore: estrutura inicial do trabalho 4 (microsserviços)`
 Pronto quando: `docker compose up -d` e `docker compose ps` mostra os 3 rodando.
 Commit: `feat: docker-compose com os bancos de cada serviço`
 
-### ☐ CP2 — Serviço de Pacientes (Python)
-- [ ] FastAPI + SQLAlchemy + PyMySQL + uvicorn, `requirements.txt`
-- [ ] Todas as rotas da seção 4.1, validação de CPF, `/health`, CORS
-- [ ] Popular 3 pacientes de exemplo se o banco estiver vazio
+### ☑ CP2 — Serviço de Pacientes (Python)
+- [x] FastAPI + SQLAlchemy + PyMySQL + uvicorn, `requirements.txt`
+- [x] Todas as rotas da seção 4.1, validação de CPF, `/health`, CORS
+- [x] Popular 3 pacientes de exemplo se o banco estiver vazio
 
 Pronto quando:
 ```bash
@@ -258,7 +258,7 @@ Commit: `docs: README, script de inicialização e roteiro de demonstração`
 |---|---|---|
 | CP0 Ambiente | ☑ | Python 3.13, Java 21, Maven 3.10 (via ~/.mavenrc usa Java 21), Node 22, Docker 29. MySQL Pacientes na porta 3308 |
 | CP1 Bancos | ☑ | mysql:8.4 (3308 e 3307) e mongo:7 (27017). Mongo com usuário root `clinica` → usar `?authSource=admin` na conexão |
-| CP2 Pacientes | ☐ | |
+| CP2 Pacientes | ☑ | Rodar: `cd servico-pacientes && source venv/bin/activate && uvicorn main:app --port 8001 --reload`. Exemplos: Ana (id 1), Bruno (2), Carla (3) |
 | CP3 Agendamento 1 | ☐ | |
 | CP4 Agendamento 2 | ☐ | |
 | CP5 Notificações | ☐ | |
