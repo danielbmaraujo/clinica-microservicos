@@ -14,12 +14,14 @@ public class ConsultaService {
     private final ConsultaRepository consultaRepository;
     private final HorarioService horarioService;
     private final PacientesClient pacientesClient;
+    private final NotificacoesClient notificacoesClient;
 
     public ConsultaService(ConsultaRepository consultaRepository, HorarioService horarioService,
-            PacientesClient pacientesClient) {
+            PacientesClient pacientesClient, NotificacoesClient notificacoesClient) {
         this.consultaRepository = consultaRepository;
         this.horarioService = horarioService;
         this.pacientesClient = pacientesClient;
+        this.notificacoesClient = notificacoesClient;
     }
 
     public Consulta marcar(MarcarConsultaRequest dados) {
@@ -46,7 +48,11 @@ public class ConsultaService {
         consulta.setProfissionalId(dados.profissionalId());
         consulta.setDataHora(dados.dataHora());
         consulta.setStatus(StatusConsulta.AGENDADA);
-        return consultaRepository.save(consulta);
+        Consulta salva = consultaRepository.save(consulta);
+
+        // 5. Avisa o Serviço de Notificações (se ele estiver fora, a consulta continua valendo)
+        notificacoesClient.avisarMarcacao(salva);
+        return salva;
     }
 
     public Consulta remarcar(Long id, RemarcarConsultaRequest dados) {
@@ -65,7 +71,9 @@ public class ConsultaService {
 
         consulta.setDataHora(dados.dataHora());
         consulta.setStatus(StatusConsulta.REMARCADA);
-        return consultaRepository.save(consulta);
+        Consulta salva = consultaRepository.save(consulta);
+        notificacoesClient.avisarRemarcacao(salva);
+        return salva;
     }
 
     public Consulta cancelar(Long id) {
@@ -74,7 +82,9 @@ public class ConsultaService {
             throw new ApiException(HttpStatus.BAD_REQUEST, "Consulta já está cancelada");
         }
         consulta.setStatus(StatusConsulta.CANCELADA);
-        return consultaRepository.save(consulta);
+        Consulta salva = consultaRepository.save(consulta);
+        notificacoesClient.avisarCancelamento(salva);
+        return salva;
     }
 
     public Consulta buscar(Long id) {

@@ -218,10 +218,10 @@ curl localhost:8003/notificacoes/paciente/1
 ```
 Commit: `feat(notificacoes): serviço de notificações em Node.js/Express`
 
-### ☐ CP6 — Integração Agendamento → Notificações
-- [ ] Agendamento chama `POST /notificacoes` ao marcar, remarcar e cancelar (URL de `NOTIFICACOES_URL`)
-- [ ] Mensagem em português com data e hora formatadas (`20/11/2026 às 09:00`)
-- [ ] Se Notificações estiver fora, a consulta é salva mesmo assim (log de aviso)
+### ☑ CP6 — Integração Agendamento → Notificações
+- [x] Agendamento chama `POST /notificacoes` ao marcar, remarcar e cancelar (URL de `NOTIFICACOES_URL`)
+- [x] Mensagem em português com data e hora formatadas (`20/11/2026 às 09:00`)
+- [x] Se Notificações estiver fora, a consulta é salva mesmo assim (log de aviso)
 
 Pronto quando: marcar uma consulta e ver o aviso em `GET /notificacoes/paciente/1`; parar o Notificações, marcar outra e receber 201 mesmo assim.
 Commit: `feat: agendamento envia notificações pela rede`
@@ -262,6 +262,6 @@ Commit: `docs: README, script de inicialização e roteiro de demonstração`
 | CP3 Agendamento 1 | ☑ | Spring Boot 3.5.16, Java 17. Rodar: `cd servico-agendamento && mvn spring-boot:run` |
 | CP4 Agendamento 2 | ☑ | Notificações ficam para o CP6. Timeout de 3 s na chamada ao Pacientes |
 | CP5 Notificações | ☑ | Express 5, Mongoose 9. Rodar: `cd servico-notificacoes && npm install && npm start` |
-| CP6 Integração | ☐ | |
+| CP6 Integração | ☑ | `NotificacoesClient.java`; falha no aviso só gera WARN no log |
 | CP7 Frontend | ☐ | |
 | CP8 Fechamento | ☐ | |
