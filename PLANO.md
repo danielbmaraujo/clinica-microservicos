@@ -154,9 +154,9 @@ Ao terminar cada um: marcar `[x]`, fazer o commit com a mensagem indicada e para
 Pronto quando: todas as ferramentas respondem com a versão.
 Commit: `chore: estrutura inicial do trabalho 4 (microsserviços)`
 
-### ☐ CP1 — Bancos de dados
-- [ ] `docker-compose.yml` com 3 containers: `mysql-pacientes` (3308 → 3306 no container; a 3306 do Mac já é usada por um MySQL local), `mysql-agendamento` (3307), `mongo-notificacoes` (27017), com volumes
-- [ ] Usuário/senha simples de desenvolvimento (`clinica` / `clinica123`), banco já criado no MySQL
+### ☑ CP1 — Bancos de dados
+- [x] `docker-compose.yml` com 3 containers: `mysql-pacientes` (3308 → 3306 no container; a 3306 do Mac já é usada por um MySQL local), `mysql-agendamento` (3307), `mongo-notificacoes` (27017), com volumes
+- [x] Usuário/senha simples de desenvolvimento (`clinica` / `clinica123`), banco já criado no MySQL
 
 Pronto quando: `docker compose up -d` e `docker compose ps` mostra os 3 rodando.
 Commit: `feat: docker-compose com os bancos de cada serviço`
@@ -257,7 +257,7 @@ Commit: `docs: README, script de inicialização e roteiro de demonstração`
 | Checkpoint | Status | Observações |
 |---|---|---|
 | CP0 Ambiente | ☑ | Python 3.13, Java 21, Maven 3.10 (via ~/.mavenrc usa Java 21), Node 22, Docker 29. MySQL Pacientes na porta 3308 |
-| CP1 Bancos | ☐ | |
+| CP1 Bancos | ☑ | mysql:8.4 (3308 e 3307) e mongo:7 (27017). Mongo com usuário root `clinica` → usar `?authSource=admin` na conexão |
 | CP2 Pacientes | ☐ | |
 | CP3 Agendamento 1 | ☐ | |
 | CP4 Agendamento 2 | ☐ | |

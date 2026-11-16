@@ -1,0 +1,50 @@
+# Bancos de dados do sistema de clínica.
+# Cada microsserviço tem o SEU banco; nenhum serviço acessa o banco de outro.
+# Os serviços em si rodam fora do Docker (direto no Mac).
+
+services:
+
+  # Banco do Serviço de Pacientes (Python)
+  mysql-pacientes:
+    image: mysql:8.4
+    container_name: mysql-pacientes
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: db_pacientes      # banco já criado ao subir
+      MYSQL_USER: clinica
+      MYSQL_PASSWORD: clinica123
+    ports:
+      - "3308:3306"                     # Mac 3308 -> container 3306 (a 3306 do Mac já está em uso)
+    volumes:
+      - dados-pacientes:/var/lib/mysql  # dados continuam salvos se o container for recriado
+
+  # Banco do Serviço de Agendamento (Java)
+  mysql-agendamento:
+    image: mysql:8.4
+    container_name: mysql-agendamento
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: db_agendamento
+      MYSQL_USER: clinica
+      MYSQL_PASSWORD: clinica123
+    ports:
+      - "3307:3306"
+    volumes:
+      - dados-agendamento:/var/lib/mysql
+
+  # Banco do Serviço de Notificações (Node.js)
+  mongo-notificacoes:
+    image: mongo:7
+    container_name: mongo-notificacoes
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: clinica
+      MONGO_INITDB_ROOT_PASSWORD: clinica123
+    ports:
+      - "27017:27017"
+    volumes:
+      - dados-notificacoes:/data/db
+
+volumes:
+  dados-pacientes:
+  dados-agendamento:
+  dados-notificacoes:
