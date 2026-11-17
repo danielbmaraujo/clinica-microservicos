@@ -226,10 +226,10 @@ Commit: `feat(notificacoes): serviço de notificações em Node.js/Express`
 Pronto quando: marcar uma consulta e ver o aviso em `GET /notificacoes/paciente/1`; parar o Notificações, marcar outra e receber 201 mesmo assim.
 Commit: `feat: agendamento envia notificações pela rede`
 
-### ☐ CP7 — Frontend (React)
-- [ ] Projeto Vite + React na porta **3000** (`vite.config.js`)
-- [ ] Arquivo `src/api.js` com as 3 URLs base e as funções de chamada
-- [ ] As 3 telas da seção 4.4
+### ☑ CP7 — Frontend (React)
+- [x] Projeto Vite + React na porta **3000** (`vite.config.js`)
+- [x] Arquivo `src/api.js` com as 3 URLs base e as funções de chamada
+- [x] As 3 telas da seção 4.4
 
 Pronto quando: pelo navegador dá para cadastrar um paciente, marcar uma consulta num horário livre, remarcar, cancelar e ver os avisos.
 Commit: `feat(frontend): interface React consumindo os 3 microsserviços`
@@ -263,5 +263,5 @@ Commit: `docs: README, script de inicialização e roteiro de demonstração`
 | CP4 Agendamento 2 | ☑ | Notificações ficam para o CP6. Timeout de 3 s na chamada ao Pacientes |
 | CP5 Notificações | ☑ | Express 5, Mongoose 9. Rodar: `cd servico-notificacoes && npm install && npm start` |
 | CP6 Integração | ☑ | `NotificacoesClient.java`; falha no aviso só gera WARN no log |
-| CP7 Frontend | ☐ | |
+| CP7 Frontend | ☑ | React 19 + Vite 8. Rodar: `cd frontend && npm install && npm run dev`. Testado no navegador pelo Daniel |
 | CP8 Fechamento | ☐ | |
