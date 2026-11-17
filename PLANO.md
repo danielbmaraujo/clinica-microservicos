@@ -234,11 +234,11 @@ Commit: `feat: agendamento envia notificações pela rede`
 Pronto quando: pelo navegador dá para cadastrar um paciente, marcar uma consulta num horário livre, remarcar, cancelar e ver os avisos.
 Commit: `feat(frontend): interface React consumindo os 3 microsserviços`
 
-### ☐ CP8 — Fechamento e apresentação
-- [ ] `README.md`: o que é o sistema, diagrama (link para o PDF), como rodar cada parte (ordem e comandos), tabela de portas
-- [ ] Script `iniciar.sh` que sobe os bancos e mostra os comandos para abrir cada serviço em um terminal
-- [ ] Roteiro de demonstração (5 minutos) no README: fluxo de marcar consulta + derrubar um serviço para mostrar que é independente
-- [ ] Teste de ponta a ponta seguindo o roteiro, do zero
+### ☑ CP8 — Fechamento e apresentação
+- [x] `README.md`: o que é o sistema, diagrama (link para o PDF), como rodar cada parte (ordem e comandos), tabela de portas
+- [x] Script `iniciar.sh` que sobe os bancos e mostra os comandos para abrir cada serviço em um terminal
+- [x] Roteiro de demonstração (5 minutos) no README: fluxo de marcar consulta + derrubar um serviço para mostrar que é independente
+- [x] Teste de ponta a ponta seguindo o roteiro, do zero
 
 Pronto quando: o Daniel consegue subir tudo seguindo só o README.
 Commit: `docs: README, script de inicialização e roteiro de demonstração`
@@ -264,4 +264,4 @@ Commit: `docs: README, script de inicialização e roteiro de demonstração`
 | CP5 Notificações | ☑ | Express 5, Mongoose 9. Rodar: `cd servico-notificacoes && npm install && npm start` |
 | CP6 Integração | ☑ | `NotificacoesClient.java`; falha no aviso só gera WARN no log |
 | CP7 Frontend | ☑ | React 19 + Vite 8. Rodar: `cd frontend && npm install && npm run dev`. Testado no navegador pelo Daniel |
-| CP8 Fechamento | ☐ | |
+| CP8 Fechamento | ☑ | Testado do zero num clone limpo e pelo Daniel seguindo o README. Diagrama em `docs/diagrama-c4.pdf` |
