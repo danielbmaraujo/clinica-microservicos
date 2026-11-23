@@ -8,4 +8,8 @@ export default defineConfig({
     port: 3000,
     strictPort: true, // se a 3000 estiver ocupada, dá erro em vez de usar outra porta
   },
+  // "npm start" (vite preview) serve a pasta dist/ gerada pelo build — usado no Railway
+  preview: {
+    allowedHosts: ['.up.railway.app'], // aceita o domínio público gerado pelo Railway
+  },
 });

@@ -1,5 +1,7 @@
-# Serviço de Pacientes — FastAPI na porta 8001.
-# Rodar: uvicorn main:app --port 8001 --reload
+# Serviço de Pacientes — FastAPI na porta 8001 (ou na porta da variável PORT).
+# Rodar local: uvicorn main:app --port 8001 --reload
+# No Railway: uvicorn main:app --host 0.0.0.0 --port $PORT (ver railway.json)
+import os
 from datetime import date
 
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
@@ -16,10 +18,14 @@ from schemas import PacienteEntrada, PacienteSaida
 
 app = FastAPI(title="Serviço de Pacientes")
 
-# CORS: libera o frontend React (localhost:3000) para chamar esta API
+# CORS: libera o frontend React local (localhost:3000) e o frontend publicado (variável FRONTEND_URL)
+ORIGENS_PERMITIDAS = ["http://localhost:3000"]
+if os.getenv("FRONTEND_URL"):
+    ORIGENS_PERMITIDAS.append(os.getenv("FRONTEND_URL").rstrip("/"))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=ORIGENS_PERMITIDAS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -137,3 +143,10 @@ def desativar(paciente_id: int, db: Session = Depends(get_db)):
     paciente.ativo = False
     db.commit()
     return Response(status_code=204)
+
+
+# Permite rodar também com "python main.py" (escuta em 0.0.0.0 na porta da variável PORT)
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", "8001")))

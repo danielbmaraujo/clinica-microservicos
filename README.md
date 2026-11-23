@@ -118,13 +118,16 @@ Todas têm valor padrão para rodar local; só mude se precisar.
 
 | Serviço | Variáveis (padrão) |
 |---|---|
-| Pacientes | `DB_HOST` (localhost), `DB_PORT` (3308), `DB_USER` (clinica), `DB_PASSWORD` (clinica123), `DB_NAME` (db_pacientes) |
-| Agendamento | `DB_HOST` (localhost), `DB_PORT` (3307), `DB_USER`, `DB_PASSWORD`, `DB_NAME` (db_agendamento), `PACIENTES_URL` (http://localhost:8001), `NOTIFICACOES_URL` (http://localhost:8003) |
-| Notificações | `PORT` (8003), `MONGO_URL` (mongodb://clinica:clinica123@localhost:27017/db_notificacoes?authSource=admin) |
+| Pacientes | `PORT` (8001), `MYSQLHOST` (localhost), `MYSQLPORT` (3308), `MYSQLUSER` (clinica), `MYSQLPASSWORD` (clinica123), `MYSQLDATABASE` (db_pacientes), `FRONTEND_URL` (vazio) |
+| Agendamento | `PORT` (8002), `MYSQLHOST` (localhost), `MYSQLPORT` (3307), `MYSQLUSER`, `MYSQLPASSWORD`, `MYSQLDATABASE` (db_agendamento), `PACIENTES_URL` (http://localhost:8001), `NOTIFICACOES_URL` (http://localhost:8003), `FRONTEND_URL` (vazio) |
+| Notificações | `PORT` (8003), `MONGO_URL` (mongodb://clinica:clinica123@localhost:27017/db_notificacoes?authSource=admin), `FRONTEND_URL` (vazio) |
+| Frontend | `VITE_PACIENTES_URL`, `VITE_AGENDAMENTO_URL`, `VITE_NOTIFICACOES_URL` (padrão: os 3 serviços em localhost) |
+
+`FRONTEND_URL` é a origem do frontend publicado, liberada no CORS além de `http://localhost:3000`. Para publicar no Railway, veja o [DEPLOY.md](DEPLOY.md).
 
 ## APIs
 
-Padrões em todos os serviços: JSON em camelCase · erros no formato `{"erro": "mensagem"}` · `GET /health` · CORS liberado para `http://localhost:3000`.
+Padrões em todos os serviços: JSON em camelCase · erros no formato `{"erro": "mensagem"}` · `GET /health` · CORS liberado para `http://localhost:3000` (e para `FRONTEND_URL`, se definida).
 
 **Pacientes (:8001)** — documentação interativa em http://localhost:8001/docs
 | Método | Rota | Descrição |

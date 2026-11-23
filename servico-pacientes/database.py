@@ -1,15 +1,16 @@
 # Conexão com o banco MySQL do Serviço de Pacientes.
 # Os dados de conexão vêm de variáveis de ambiente (com valor padrão para rodar local).
+# Os nomes MYSQL* são os mesmos que o MySQL do Railway fornece.
 import os
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_PORT = os.getenv("DB_PORT", "3308")
-DB_USER = os.getenv("DB_USER", "clinica")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "clinica123")
-DB_NAME = os.getenv("DB_NAME", "db_pacientes")
+DB_HOST = os.getenv("MYSQLHOST", "localhost")
+DB_PORT = os.getenv("MYSQLPORT", "3308")
+DB_USER = os.getenv("MYSQLUSER", "clinica")
+DB_PASSWORD = os.getenv("MYSQLPASSWORD", "clinica123")
+DB_NAME = os.getenv("MYSQLDATABASE", "db_pacientes")
 
 URL_BANCO = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 

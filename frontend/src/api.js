@@ -1,9 +1,10 @@
 // Todas as chamadas aos 3 microsserviços ficam aqui.
 // O frontend conversa com cada serviço diretamente, pela rede (HTTP + JSON).
 
-export const PACIENTES_URL = 'http://localhost:8001';
-export const AGENDAMENTO_URL = 'http://localhost:8002';
-export const NOTIFICACOES_URL = 'http://localhost:8003';
+// As URLs vêm das variáveis VITE_* (lidas na hora do build); sem elas, usa os serviços locais.
+export const PACIENTES_URL = import.meta.env.VITE_PACIENTES_URL || 'http://localhost:8001';
+export const AGENDAMENTO_URL = import.meta.env.VITE_AGENDAMENTO_URL || 'http://localhost:8002';
+export const NOTIFICACOES_URL = import.meta.env.VITE_NOTIFICACOES_URL || 'http://localhost:8003';
 
 // Faz a requisição e devolve o JSON da resposta.
 // Se a API responder erro, lança um Error com a mensagem do campo "erro".

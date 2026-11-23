@@ -1,4 +1,4 @@
-// Serviço de Notificações — Express na porta 8003.
+// Serviço de Notificações — Express na porta 8003 (ou na porta da variável PORT).
 // Rodar: npm start
 const express = require('express');
 const cors = require('cors');
@@ -12,7 +12,12 @@ const MONGO_URL =
   'mongodb://clinica:clinica123@localhost:27017/db_notificacoes?authSource=admin';
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:3000' })); // libera o frontend React
+// CORS: libera o frontend React local e o frontend publicado (variável FRONTEND_URL)
+const ORIGENS_PERMITIDAS = ['http://localhost:3000'];
+if (process.env.FRONTEND_URL) {
+  ORIGENS_PERMITIDAS.push(process.env.FRONTEND_URL.replace(/\/$/, ''));
+}
+app.use(cors({ origin: ORIGENS_PERMITIDAS }));
 app.use(express.json()); // lê o corpo das requisições como JSON
 
 // ---------- Rotas ----------
@@ -77,9 +82,11 @@ app.use((err, req, res, next) => {
 
 // Conecta no MongoDB primeiro; só depois começa a aceitar requisições
 mongoose
-  .connect(MONGO_URL)
+  // dbName: garante o banco db_notificacoes mesmo que a URL (ex.: a do Railway) não diga o nome
+  .connect(MONGO_URL, { dbName: 'db_notificacoes' })
   .then(() => {
-    app.listen(PORTA, () => {
+    // 0.0.0.0 = aceita conexões de fora da máquina (necessário no Railway)
+    app.listen(PORTA, '0.0.0.0', () => {
       console.log(`Serviço de Notificações rodando em http://localhost:${PORTA}`);
     });
   })

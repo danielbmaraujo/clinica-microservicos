@@ -45,6 +45,8 @@
     </dependencies>
 
     <build>
+        <!-- Gera target/servico-agendamento.jar (jar executável: java -jar ...) -->
+        <finalName>servico-agendamento</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
